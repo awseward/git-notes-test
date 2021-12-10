@@ -8,16 +8,10 @@ jobs:
 
       - uses: awseward/git-test-setup@main
         with:
-          git_test_dir: .foo-bar-baz
-          git_config_user_email: 'boop.beep@wat.co.uk'
-          git_config_user_name: 'Boop beep'
           test_name: ci
-          test_command: 'ls -lah'
+          test_command: ./test.sh
 
-      - run: git fetch --force origin 'refs/notes/*:refs/notes/*'
-
-      - run: git notes --ref=tests/default list | while read -r result_id tree_id; do echo -e "$(git show "${result_id}")\t${tree_id}"; done
-
+      # - run: git notes --ref=tests/default list | while read -r result_id tree_id; do echo -e "$(git show "${result_id}")\t${tree_id}"; done
       # - run: git log --oneline --reverse | awk '{ print $1 }' | xargs -t git test run --keep-going
 
       - run: git test run --test ci
