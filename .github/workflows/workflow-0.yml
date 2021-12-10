@@ -1,0 +1,11 @@
+name: Workflow 0
+on: [push]
+jobs:
+  job_0:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - run: tree ./.git/
+      - run: git fetch origin 'refs/notes/*:refs/notes/*'
+      - run: tree ./.git/
+
