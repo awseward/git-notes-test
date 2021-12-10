@@ -5,6 +5,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: awseward/git-test-setup@main
+        with:
+          git_test_dir: .foo-bar-baz
       - run: git fetch --force origin 'refs/notes/*:refs/notes/*'
       - run: git notes --ref=tests/default list | while read -r result_id tree_id; do echo -e "$(git show "${result_id}")\t${tree_id}"; done
       # - run: git log --oneline --reverse | awk '{ print $1 }' | xargs -t git test run --keep-going
