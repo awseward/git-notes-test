@@ -4,18 +4,7 @@ jobs:
   job_0:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/checkout@v2
-        with:
-          repository: 'mhagger/git-test'
-          path: '.git-test'
-      - run: tree -a .
-      - run: echo "PATH=${PATH}:$(pwd)/.git-test/bin" >> "${GITHUB_ENV}"
-      - run: git test help
-      - run: git config --local user.email "beep.boop@example.com"
-      - run: git config --local user.name "Beep Boop"
-      - run: git config --list
-      - run: git test add './test.sh'
+      - uses: awseward/git-test-setup@main
       - run: git fetch --force origin 'refs/notes/*:refs/notes/*'
       - run: git notes --ref=tests/default list | while read -r result_id tree_id; do echo -e "$(git show "${result_id}")\t${tree_id}"; done
       # - run: git log --oneline --reverse | awk '{ print $1 }' | xargs -t git test run --keep-going
