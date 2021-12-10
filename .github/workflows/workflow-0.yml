@@ -15,3 +15,5 @@ jobs:
       # - run: git log --oneline --reverse | awk '{ print $1 }' | xargs -t git test run --keep-going
 
       - run: git test run --test ci
+
+      - run: git push origin 'refs/notes/tests/ci'
