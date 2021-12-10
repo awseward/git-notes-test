@@ -10,9 +10,9 @@ jobs:
           repository: 'mhagger/git-test'
           path: '.git-test'
       - run: tree -a .
-      - run: export PATH="${PATH}:$(pwd)/.git-test/bin" && git test help
+      - run: echo "PATH=${PATH}:$(pwd)/.git-test/bin" >> "${GITHUB_ENV}"
+      - run: git test help
       - run: git fetch origin 'refs/notes/*:refs/notes/*'
       - run: git notes --ref 'notes/beep/boop' | awk '{ print $2 }' | xargs -n1 git notes --ref 'notes/beep/boop' show
       # - run: git clone git@github.com:mhagger/git-test.git "${HOME}/.git-test" && export PATH="${PATH}:${HOME}/.git-test/bin"
-      - run: git test
 
