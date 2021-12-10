@@ -8,4 +8,5 @@ jobs:
       - run: tree ./.git/
       - run: git fetch origin 'refs/notes/*:refs/notes/*'
       - run: tree ./.git/
+      - run: git notes --ref 'notes/beep/boop' | awk '{ print $2 }' | xargs -n1 git notes --ref 'notes/beep/boop' show
 
