@@ -17,7 +17,7 @@ jobs:
       - run: git config --list
       - run: git test add './test.sh'
       - run: git fetch --force origin 'refs/notes/*:refs/notes/*'
-      - run: g log --oneline | awk '{ print $1 }' | xargs -t git test run --keep-going
+      - run: git log --oneline | awk '{ print $1 }' | xargs -t git test run --keep-going
       # - run: git test run --keep-going || true
       - run: tree -a .
       # - run: git fetch origin 'refs/notes/*:refs/notes/*'
