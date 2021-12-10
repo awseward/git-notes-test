@@ -11,7 +11,9 @@ jobs:
           path: '.git-test'
       - run: tree -a .
       - run: echo "PATH=${PATH}:$(pwd)/.git-test/bin" >> "${GITHUB_ENV}"
-      - run: git test help && git test add './test.sh'
+      - run: git test help
+      - run: git config --list
+      - run: git test add './test.sh'
       - run: git test run --keep-going
       - run: tree -a .
       # - run: git fetch origin 'refs/notes/*:refs/notes/*'
