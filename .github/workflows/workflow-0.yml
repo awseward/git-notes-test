@@ -20,8 +20,3 @@ jobs:
       - run: git test add './test.sh'
       - run: git fetch --force origin 'refs/notes/*:refs/notes/*'
       - run: git log --oneline --reverse | awk '{ print $1 }' | xargs -t git test run --keep-going || true
-      # - run: git test run --keep-going || true
-      - run: tree -a .
-      # - run: git fetch origin 'refs/notes/*:refs/notes/*'
-      # - run: git notes --ref 'notes/beep/boop' | awk '{ print $2 }' | xargs -n1 git notes --ref 'notes/beep/boop' show
-
