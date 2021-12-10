@@ -12,9 +12,11 @@ jobs:
       - run: tree -a .
       - run: echo "PATH=${PATH}:$(pwd)/.git-test/bin" >> "${GITHUB_ENV}"
       - run: git test help
+      - run: git config --local user.email "beep.boop@example.com"
+      - run: git config --local user.name "Beep Boop"
       - run: git config --list
       - run: git test add './test.sh'
-      - run: git test run --keep-going
+      - run: git test run --keep-going || true
       - run: tree -a .
       # - run: git fetch origin 'refs/notes/*:refs/notes/*'
       # - run: git notes --ref 'notes/beep/boop' | awk '{ print $2 }' | xargs -n1 git notes --ref 'notes/beep/boop' show
