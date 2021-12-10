@@ -8,8 +8,8 @@ jobs:
       - uses: actions/checkout@v2
         with:
           repository: 'mhagger/git-test'
-          path: '.git-notes'
-      - run: tree .
+          path: '.git-test'
+      - run: tree -a .
       - run: export PATH="${PATH}:$(pwd)/.git-test" && git test help
       - run: git fetch origin 'refs/notes/*:refs/notes/*'
       - run: git notes --ref 'notes/beep/boop' | awk '{ print $2 }' | xargs -n1 git notes --ref 'notes/beep/boop' show
